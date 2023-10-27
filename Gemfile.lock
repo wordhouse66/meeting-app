@@ -302,6 +302,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   error_highlight (>= 0.4.0)
+  execjs
   flatpickr_rails
   importmap-rails
   jbuilder
