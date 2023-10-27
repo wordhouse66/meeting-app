@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Meetings</h1>
+
+<table class="table table-bordered skins-air">
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>Duration</th>
+      <th>End time</th>
+      <th>Client</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+      <tr>
+        <% if  (meeting.end_time) && (meeting.end_time.future?) %>
+        <td><%= local_time meeting.start_time %></td>
+        <td><%= (((meeting.end_time - meeting.start_time)/60) / 60).round(1) %> hours </td>
+        <td><%= local_time meeting.end_time %></td>
+        <td><%= link_to fullname(meeting.client), meeting.client %></td>
+        <td><%= link_to 'Show', client_meeting_path(@client, meeting) %></td>
+        <td><%= link_to 'Edit', edit_client_meeting_path(@client, meeting)%></td>
+        <td><%= link_to 'Destroy', client_meeting_path(@client, meeting), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Meeting', new_client_meeting_path, class: 'btn btn-primary' %>

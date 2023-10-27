@@ -1,0 +1,70 @@
+
+
+<%= simple_form_for [@client, @meeting] do |form| %>
+  <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+      <% @meeting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class= "skins-air">
+  <div class="form-group">
+    <%= form.label :start_time, 'Meeting StartDate and Time' %><br />
+    <%= form.text_field :start_time, placeholder: "StartDate and Time", class: 'form-control', id: 'flatpickr-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_time, 'Meeting EndDate and Time' %><br />
+    <%= form.text_field :end_time, placeholder: "EndDate and Time", class: 'form-control', id: 'flatpickr-input' %>
+  </div>
+
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      flatpickr('#flatpickr-input', {
+
+      enableTime: true,
+      minuteIncrement: 1,
+      dateFormat: "Z", //This makes it users local-time
+      altInput: true,// This and altFormat below makes the form also display options in localtime and not UTC as usual
+      altFormat: 'Y-m-d h:i K'
+    })
+      
+    });
+  </script>
+
+ 
+  
+  
+
+  <div class="hidden">
+    <%= form.label "Duration" %><br>
+    <%= form.text_field :duration_hours %> hours and <%= form.text_field :duration_minutes %> minutes
+  </div><br>
+
+  
+  
+
+  <div class="hidden">
+    <%= form.label :client_id %>
+    <%= form.text_field :client_id, value:@client.id %>
+  </div>
+
+   <div class="hidden">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, value:current_user.id %>
+  </div>
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+  </div>
+<% end %>
+
+
