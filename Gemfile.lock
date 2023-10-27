@@ -308,7 +308,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   local_time
-  pg
+  pg (~> 0.20)
   puma (>= 5.0)
   rails (~> 7.1.1)
   ransack
