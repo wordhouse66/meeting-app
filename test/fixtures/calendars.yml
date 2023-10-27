@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_of_choice: 2023-10-26 19:40:37
+
+two:
+  date_of_choice: 2023-10-26 19:40:37

@@ -1,0 +1,7 @@
+<h1>Editing Meeting</h1>
+<div class="skins-air">
+	<%= render 'form', meeting: @meeting%>
+
+	<%= link_to 'Show', client_meeting_path(@client, @meeting) %> |
+	<%= link_to 'Back', meetings_path %>
+</div>

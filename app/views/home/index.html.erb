@@ -1,0 +1,80 @@
+<div class="skins-air" style="text-align: center;">
+	<h1>Current month</h1>
+	
+	<header>
+		<h3>
+			<%= Time.now.to_formatted_s(:long).to_s.split(' ')[2] %>
+			<%= Time.now.to_formatted_s(:long).to_s.split[0] %>
+			<%= Time.now.to_datetime.to_s.split('-')[2].to_i  %>
+		</h3>
+	</header><br>
+</div>
+
+<% year = Time.now.to_datetime.to_s.split('-')[0].to_i %>
+<% month = Time.now.to_datetime.to_s.split('-')[1].to_i  %>
+<% day = Time.now.to_datetime.to_s.split('-')[2].to_i  %>
+
+<% days_in_this_month =  (1 .. Time.days_in_month(month)) %><br>
+
+<div class="row">
+	<% days_in_this_month.collect do |x| %>
+		<div class="col-md-3">
+			<div class=" thumbnail"><br>
+			  <% @appointments = [] %>
+				<% @meetings.each do |meeting| %>
+					<% if (meeting.start_time) && (meeting.end_time.future?) && (meeting.start_time.to_datetime.to_s.split('-')[2].to_i == x) && (meeting.start_time.to_datetime.to_s.split('-')[1].to_i == month) && (meeting.start_time.to_datetime.to_s.split('-')[0].to_i == year) %>
+						<style type="text/css">
+							#dropdownMenuButton {
+								background-color: orange;
+							}
+							.box {
+								background-color: yellow;
+							}
+						</style>
+						<div class="box container">
+							<% @appointments.push(meeting)%>
+						</div>
+					
+					<% end %> 
+				<% end %>
+
+		    <% @appointments.unshift("you have appointments") %>
+				<div class="box">
+					<%= @appointments[0] if (@appointments.length > 1) %>
+				</div>
+			   
+
+			  <div class="dropdown">
+			    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			      <%= x %>
+			    </button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<div class="box">
+							<%  @meetings.each do |meeting| %>
+								<% if (meeting.start_time) && (meeting.end_time.future?) && ((meeting.start_time.to_datetime.to_s.split('-')[2].to_i == x) || (meeting.end_time.to_datetime.to_s.split('-')[2].to_i == x)) && (meeting.start_time.to_datetime.to_s.split('-')[1].to_i == month) && (meeting.start_time.to_datetime.to_s.split('-')[0].to_i == year) %>
+									<style type="text/css">
+										#dropdownMenuButton {
+											background-color: orange;
+										}
+										.box {
+											background-color: yellow;
+										}
+									</style>
+									<div class="box " >
+										<div class="" style="padding: 10px;">
+											<h5>Client: <%= link_to fullname(meeting.client), client_path(meeting.client) %>
+											</h5>
+											<p> Time: <%= link_to local_time(meeting.start_time.to_formatted_s(:long)), client_meeting_path(meeting.client, meeting) %> to <%= link_to local_time(meeting.end_time.to_formatted_s(:long)), client_meeting_path(meeting.client, meeting) %></p>
+											<p>Duration: <%= (((meeting.end_time - meeting.start_time)/60) / 60).round(2) %> hours </p>
+											<hr>
+										</div>
+									</div>
+								<% end %> 
+							<% end %>
+						</div>
+					</div>
+	      </div>
+	    </div>
+    </div>
+  <% end %><br>
+</div>

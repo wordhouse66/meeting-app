@@ -1,0 +1,20 @@
+<div class="skins-air">
+
+<p>
+  <strong>Start time:</strong>
+  <%=  local_time @meeting.start_time.to_formatted_s(:long) %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= local_time @meeting.end_time.to_formatted_s(:long) %>
+</p>
+
+<p>
+  <strong>Client:</strong>
+  <%= fullname @meeting.client %>
+</p>
+
+<%= link_to 'Edit', edit_client_meeting_path(@meeting.client, @meeting) %> |
+<%= link_to 'Back', client_meetings_path %>
+</div>
