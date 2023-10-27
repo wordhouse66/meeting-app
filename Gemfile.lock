@@ -174,7 +174,6 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (0.21.0)
     popper_js (2.11.8)
     psych (5.1.1.1)
       stringio
@@ -309,7 +308,6 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   local_time
-  pg (~> 0.20)
   puma (>= 5.0)
   rails (~> 7.1.1)
   ransack
