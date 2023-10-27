@@ -127,8 +127,9 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.2.1)
+    importmap-rails (1.2.3)
       actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
     irb (1.8.3)
@@ -170,9 +171,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
-      racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (0.21.0)
     popper_js (2.11.8)
     psych (5.1.1.1)
       stringio
@@ -290,7 +290,6 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -307,6 +306,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   local_time
+  pg (~> 0.20)
   puma (>= 5.0)
   rails (~> 7.1.1)
   ransack
