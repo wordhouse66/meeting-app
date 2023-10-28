@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'sass-rails'
 gem 'bootstrap'
-gem 'psych', '~> 5.1', '>= 5.1.1.1'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -63,7 +63,7 @@ gem 'dotenv-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri  ]
+  # gem "debug", platforms: %i[ mri  ]
 end
 
 group :development do
