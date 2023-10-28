@@ -11,8 +11,6 @@
 /.env*
 !/.env*.erb
 
-/Dockerfile
-
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
