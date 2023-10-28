@@ -38,6 +38,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'sass-rails'
 gem 'bootstrap'
+gem 'psych', '~> 5.1', '>= 5.1.1.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
