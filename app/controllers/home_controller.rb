@@ -3,4 +3,7 @@ class HomeController < ApplicationController
     @meetings = Meeting.where(:user_id => current_user.id)
     @calendar = Calendar.new(params[:dater])
   end
+
+  def home
+  end
 end

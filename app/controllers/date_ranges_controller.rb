@@ -58,13 +58,13 @@ class DateRangesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_date_range
-      @date_range = DateRange.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_date_range
+    @date_range = DateRange.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def date_range_params
-      params.require(:date_range).permit(:start, :finish)
-    end
+  # Only allow a list of trusted parameters through.
+  def date_range_params
+    params.require(:date_range).permit(:start, :finish)
+  end
 end

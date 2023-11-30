@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
 <%= simple_form_for [@client, @meeting] do |form| %>
@@ -35,11 +37,10 @@
       dateFormat: "Z", //This makes it users local-time
       altInput: true,// This and altFormat below makes the form also display options in localtime and not UTC as usual
       altFormat: 'Y-m-d h:i K'
-    })
+      })
       
     });
   </script>
-
  
   
   

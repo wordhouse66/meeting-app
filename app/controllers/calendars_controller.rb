@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
   def index
     @calendars = Calendar.all
     @meetings = Meeting.where(:user_id => current_user.id)
-    @calendar = Calendar.new(params[:dater])
+    @calendar = Calendar.new(params[:date_of_choice])
   end
 
   # GET /calendars/1 or /calendars/1.json
@@ -60,20 +60,20 @@ class CalendarsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_calendar
-      @calendar = Calendar.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_calendar
+    @calendar = Calendar.find(params[:id])
+  end
 
-    def restrict_user
-      unless current_user.has_role? :admin
-        redirect_to root_path,
-        notice: "you can't do that"
-      end
-    end  
-
-    # Only allow a list of trusted parameters through.
-    def calendar_params
-      params.require(:calendar).permit(:date_of_choice)
+  def restrict_user
+    unless current_user.has_role? :admin
+      redirect_to root_path,
+      notice: "you can't do that"
     end
+  end  
+
+  # Only allow a list of trusted parameters through.
+  def calendar_params
+    params.require(:calendar).permit(:date_of_choice)
+  end
 end
